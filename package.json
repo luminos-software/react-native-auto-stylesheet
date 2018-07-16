@@ -1,0 +1,34 @@
+{
+  "name": "react-native-auto-stylesheet",
+  "version": "0.1.0",
+  "description": "React Native package that provides an automatically scalable StyleSheet",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "stylesheet",
+    "scaling"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luminos-software/react-native-auto-stylesheet.git"
+  },
+  "author": "Radu Batori <radu@luminos.software>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luminos-software/react-native-auto-stylesheet/issues"
+  },
+  "homepage": "https://github.com/luminos-software/react-native-auto-stylesheet#readme",
+  "devDependencies": {
+    "@types/react-native": "0.56.1",
+    "prettier": "1.13.7",
+    "react-native": "0.56.0",
+    "typescript": "2.9.2"
+  }
+}
