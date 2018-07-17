@@ -35,35 +35,34 @@ const PROPERTIES_DEPENDING_ON_HEIGHT = [
 ];
 const PROPERTIES_DEPENDING_ON_NEITHER = ['fontSize', 'margin', 'padding', 'borderWidth'];
 exports.StyleSheet = Object.assign({}, react_native_1.StyleSheet, { scaleHorizontally(size) {
-        return size;
         return react_native_1.PixelRatio.roundToNearestPixel(size * horizontalFactor);
     },
     scaleVertically(size) {
-        return size;
         return react_native_1.PixelRatio.roundToNearestPixel(size * verticalFactor);
     },
     scaleWithAverageRatio(size) {
-        return size;
         return react_native_1.PixelRatio.roundToNearestPixel(size * adimensionalFactor);
     },
     create(styles) {
+        const newStyles = {};
         for (const key in styles) {
-            const style = styles[key];
+            let style = styles[key];
+            newStyles[key] = Object.assign({}, style);
             for (const property in style) {
                 const propName = property;
                 const value = style[propName];
                 if (PROPERTIES_DEPENDING_ON_WIDTH.includes(propName) && typeof value === 'number') {
-                    style[propName] = this.scaleHorizontally(value);
+                    newStyles[key][propName] = this.scaleHorizontally(value);
                 }
                 if (PROPERTIES_DEPENDING_ON_HEIGHT.includes(propName) && typeof value === 'number') {
-                    style[propName] = this.scaleVertically(value);
+                    newStyles[key][propName] = this.scaleVertically(value);
                 }
                 if (PROPERTIES_DEPENDING_ON_NEITHER.includes(propName) && typeof value === 'number') {
-                    style[propName] = this.scaleWithAverageRatio(value);
+                    newStyles[key][propName] = this.scaleWithAverageRatio(value);
                 }
             }
         }
-        return react_native_1.StyleSheet.create(styles);
+        return react_native_1.StyleSheet.create(newStyles);
     },
     setGuidelineBaseDimensions(newWidth = 375, newHeight = 667) {
         guidelineBaseWidth = newWidth;

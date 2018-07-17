@@ -42,40 +42,41 @@ export const StyleSheet = {
   ...RNStyleSheet,
 
   scaleHorizontally(size: number) {
-    return size;
     return PixelRatio.roundToNearestPixel(size * horizontalFactor);
   },
 
   scaleVertically(size: number) {
-    return size;
     return PixelRatio.roundToNearestPixel(size * verticalFactor);
   },
 
   scaleWithAverageRatio(size: number) {
-    return size;
     return PixelRatio.roundToNearestPixel(size * adimensionalFactor);
   },
 
   create<T extends NamedStyles<T>>(styles: T) {
+    const newStyles: T = {} as T;
+
     for (const key in styles) {
-      const style: ViewStyle | TextStyle | ImageStyle = styles[key];
+      let style: ViewStyle | TextStyle | ImageStyle = styles[key];
+      newStyles[key] = { ...style };
+
       for (const property in style) {
         const propName = property as keyof (ViewStyle | TextStyle | ImageStyle);
         const value = style[propName];
 
         if (PROPERTIES_DEPENDING_ON_WIDTH.includes(propName) && typeof value === 'number') {
-          style[propName] = this.scaleHorizontally(value);
+          newStyles[key][propName] = this.scaleHorizontally(value);
         }
         if (PROPERTIES_DEPENDING_ON_HEIGHT.includes(propName) && typeof value === 'number') {
-          style[propName] = this.scaleVertically(value);
+          newStyles[key][propName] = this.scaleVertically(value);
         }
         if (PROPERTIES_DEPENDING_ON_NEITHER.includes(propName) && typeof value === 'number') {
-          style[propName] = this.scaleWithAverageRatio(value);
+          newStyles[key][propName] = this.scaleWithAverageRatio(value);
         }
       }
     }
 
-    return RNStyleSheet.create(styles);
+    return RNStyleSheet.create(newStyles);
   },
 
   setGuidelineBaseDimensions(newWidth = 375, newHeight = 667) {

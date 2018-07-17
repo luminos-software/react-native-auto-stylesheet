@@ -35,7 +35,7 @@ The library assumes that the dimensions are relative to a 375 x 667 design (the 
 
 ## In practice
 
-Let's replace React Native's `StyleSheet` with `react-native-auto-stylesheet` in one of our screens without any other changes.
+Replacing React Native's `StyleSheet` with `react-native-auto-stylesheet` in one of our screens (without any other changes) yields immediate results.
 
 Before:
 
