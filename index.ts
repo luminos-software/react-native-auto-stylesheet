@@ -8,9 +8,16 @@ let guidelineBaseWidth = 375;
 let guidelineBaseHeight = 667;
 let scalingFactor: number = 1;
 
-const horizontalFactor = (width / guidelineBaseWidth) * scalingFactor;
-const verticalFactor = (height / guidelineBaseHeight) * scalingFactor;
-const adimensionalFactor = (horizontalFactor + verticalFactor) / 2;
+let horizontalFactor: number;
+let verticalFactor: number;
+let adimensionalFactor: number;
+
+const calculateFactors = () => {
+  horizontalFactor = (width / guidelineBaseWidth) * scalingFactor;
+  verticalFactor = (height / guidelineBaseHeight) * scalingFactor;
+  adimensionalFactor = (horizontalFactor + verticalFactor) / 2;
+};
+calculateFactors();
 
 const PROPERTIES_DEPENDING_ON_WIDTH = [
   'width',
@@ -84,10 +91,12 @@ export const StyleSheet = {
   setGuidelineBaseDimensions(newWidth = 375, newHeight = 667) {
     guidelineBaseWidth = newWidth;
     guidelineBaseHeight = newHeight;
+    calculateFactors();
   },
 
   setFactor(factor: number) {
     scalingFactor = factor;
+    calculateFactors();
   },
 
   createUnscaled: RNStyleSheet.create
