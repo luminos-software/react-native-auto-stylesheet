@@ -1,6 +1,6 @@
 {
   "name": "react-native-auto-stylesheet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Native package that provides an automatically scalable StyleSheet",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luminos-software/react-native-auto-stylesheet.git"
+    "url": "https://github.com/luminos-software/react-native-auto-stylesheet.git"
   },
   "author": "Radu Batori <radu@luminos.software>",
   "license": "MIT",
