@@ -9,13 +9,13 @@ The library's main features are:
 - Use absolute values when creating layouts. No more need to calculate percentages or flex ratios from the design.
 - TypeScript support.
 
-### Installation instructions
+## Installation instructions
 
 ```bash
 $ yarn add react-native-auto-stylesheet
 ```
 
-### Example usage
+## Example usage
 
 ```typescript
 import { StyleSheet } from 'react-native-auto-stylesheet';
@@ -65,16 +65,29 @@ StyleSheet.absoluteFill;
 StyleSheet.absoluteFillObject;
 ```
 
-### Configuration
+### What if I have different design dimensions?
 
 If needed, different values can be set for the relative design dimensions:
 
 ```typescript
-import { StyleSheet } from 'react-native-auto-stylesheet';
-
 // the designs are based on iPad Air dimensions
 // make sure to call this as soon as possible, before any styles are calculated
 StyleSheet.setGuidelineBaseDimensions(768, 1024);
+```
+
+### What if I need to scale using a different factor?
+
+The following example shows how setting a different factor can be achieved for devices with a wide screen.
+
+```typescript
+import { Dimensions } from 'react-native';
+const { width } = Dimensions.get('window');
+
+if (width >= 1024) {
+  StyleSheet.setFactor(0.5);
+  // technically equivalent to:
+  // StyleSheet.setGuidelineBaseDimensions(750, 1334);
+}
 ```
 
 ### What if I need to keep the aspect ratio?
