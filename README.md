@@ -39,11 +39,11 @@ Replacing React Native's `StyleSheet` with `react-native-auto-stylesheet` in one
 
 Before:
 
-![](/images/before.png)
+![](https://s3-eu-west-1.amazonaws.com/stylesheet-screenshots/before.png)
 
 After:
 
-![](/images/after.png)
+![](https://s3-eu-west-1.amazonaws.com/stylesheet-screenshots/after.png)
 
 With almost no effort the results are much better. There are still problems with the navigation header and some icons, but they are easy to fix.
 
