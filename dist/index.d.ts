@@ -8,6 +8,7 @@ export declare const StyleSheet: {
     scaleWithAverageRatio(size: number): number;
     create<T extends NamedStyles<T>>(styles: T): { [P in keyof T]: import("react-native").RegisteredStyle<T[P]>; };
     setGuidelineBaseDimensions(newWidth?: number, newHeight?: number): void;
+    setFactor(factor: number): void;
     createUnscaled: typeof RNStyleSheet.create;
     flatten<T>(style?: import("react-native").RegisteredStyle<T> | undefined): T;
     flatten(style?: import("react-native").StyleProp<TextStyle>): TextStyle;

@@ -4,8 +4,9 @@ const react_native_1 = require("react-native");
 const { width, height } = react_native_1.Dimensions.get('window');
 let guidelineBaseWidth = 375;
 let guidelineBaseHeight = 667;
-const horizontalFactor = width / guidelineBaseWidth;
-const verticalFactor = height / guidelineBaseHeight;
+let scalingFactor = 1;
+const horizontalFactor = (width / guidelineBaseWidth) * scalingFactor;
+const verticalFactor = (height / guidelineBaseHeight) * scalingFactor;
 const adimensionalFactor = (horizontalFactor + verticalFactor) / 2;
 const PROPERTIES_DEPENDING_ON_WIDTH = [
     'width',
@@ -67,4 +68,7 @@ exports.StyleSheet = Object.assign({}, react_native_1.StyleSheet, { scaleHorizon
     setGuidelineBaseDimensions(newWidth = 375, newHeight = 667) {
         guidelineBaseWidth = newWidth;
         guidelineBaseHeight = newHeight;
+    },
+    setFactor(factor) {
+        scalingFactor = factor;
     }, createUnscaled: react_native_1.StyleSheet.create });
