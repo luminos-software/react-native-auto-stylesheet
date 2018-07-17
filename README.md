@@ -106,11 +106,7 @@ const unscaledStyles = StyleSheet.createUnscaled({
   }
 });
 
-// not in @types/react-native yet, so you could just return `[scaledStyles, unscaledStyles]`
-export const styles = StyleSheet.compose(
-  scaledStyles,
-  unscaledStyles
-);
+export const styles = { ...scaledStyles, ...unscaledStyles };
 ```
 
 ### What if I want to scale manually?
