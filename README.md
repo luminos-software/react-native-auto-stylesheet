@@ -87,6 +87,7 @@ if (width >= 1024) {
   StyleSheet.setFactor(0.5);
   // technically equivalent to:
   // StyleSheet.setGuidelineBaseDimensions(750, 1334);
+  // 375 / 0.5 = 750, 667 / 0.5 = 1334
 }
 ```
 
