@@ -40,8 +40,23 @@ const PROPERTIES_DEPENDING_ON_HEIGHT = [
     'top',
     'bottom'
 ];
-const PROPERTIES_DEPENDING_ON_NEITHER = ['fontSize', 'margin', 'padding', 'borderWidth'];
-exports.StyleSheet = Object.assign({}, react_native_1.StyleSheet, { scaleHorizontally(size) {
+const PROPERTIES_DEPENDING_ON_NEITHER = ['fontSize', 'margin', 'padding', 'borderWidth', 'borderRadius'];
+const PROPERTIES_AFFECTED = [
+    ...PROPERTIES_DEPENDING_ON_WIDTH,
+    ...PROPERTIES_DEPENDING_ON_HEIGHT,
+    ...PROPERTIES_DEPENDING_ON_NEITHER
+];
+exports.StyleSheet = Object.assign({}, react_native_1.StyleSheet, { scale(size, scaleType) {
+        switch (scaleType) {
+            case 'height':
+                return this.scaleVertically(size);
+            case 'width':
+                return this.scaleHorizontally(size);
+            case 'average':
+                return this.scaleWithAverageRatio(size);
+        }
+    },
+    scaleHorizontally(size) {
         return react_native_1.PixelRatio.roundToNearestPixel(size * horizontalFactor);
     },
     scaleVertically(size) {
@@ -50,7 +65,7 @@ exports.StyleSheet = Object.assign({}, react_native_1.StyleSheet, { scaleHorizon
     scaleWithAverageRatio(size) {
         return react_native_1.PixelRatio.roundToNearestPixel(size * adimensionalFactor);
     },
-    create(styles) {
+    create(styles, scaleType) {
         const newStyles = {};
         for (const key in styles) {
             let style = styles[key];
@@ -58,14 +73,21 @@ exports.StyleSheet = Object.assign({}, react_native_1.StyleSheet, { scaleHorizon
             for (const property in style) {
                 const propName = property;
                 const value = style[propName];
-                if (PROPERTIES_DEPENDING_ON_WIDTH.includes(propName) && typeof value === 'number') {
-                    newStyles[key][propName] = this.scaleHorizontally(value);
+                if (scaleType) {
+                    if (PROPERTIES_AFFECTED.includes(propName) && typeof value === 'number') {
+                        newStyles[key][propName] = this.scale(value, scaleType);
+                    }
                 }
-                if (PROPERTIES_DEPENDING_ON_HEIGHT.includes(propName) && typeof value === 'number') {
-                    newStyles[key][propName] = this.scaleVertically(value);
-                }
-                if (PROPERTIES_DEPENDING_ON_NEITHER.includes(propName) && typeof value === 'number') {
-                    newStyles[key][propName] = this.scaleWithAverageRatio(value);
+                else {
+                    if (PROPERTIES_DEPENDING_ON_WIDTH.includes(propName) && typeof value === 'number') {
+                        newStyles[key][propName] = this.scaleHorizontally(value);
+                    }
+                    if (PROPERTIES_DEPENDING_ON_HEIGHT.includes(propName) && typeof value === 'number') {
+                        newStyles[key][propName] = this.scaleVertically(value);
+                    }
+                    if (PROPERTIES_DEPENDING_ON_NEITHER.includes(propName) && typeof value === 'number') {
+                        newStyles[key][propName] = this.scaleWithAverageRatio(value);
+                    }
                 }
             }
         }

@@ -91,6 +91,18 @@ if (width >= 1024) {
 }
 ```
 
+Another option to consider is specifying the `scaleType` parameter:
+
+```typescript
+export const styles = StyleSheet.create({
+  averageScaledStyle: {
+    width: 100 // will not use horizontal scaling, but average
+  },
+  // or 'width', or 'height'
+  'average'
+);
+```
+
 ### What if I need to keep the aspect ratio?
 
 Use the `aspectRatio` layout property:
@@ -139,7 +151,7 @@ StyleSheet.scaleWithAverageRatio(size: number): number;
 
     - Based on height: `height`, `marginTop`, `marginBottom`, `marginVertical`, `paddingTop`, `paddingBottom`, `paddingVertical`, `borderLeftWidth`, `borderRightWidth`, `top`, `bottom`.
     - Based on width: `width`, `marginLeft`, `marginRight`, `marginHorizontal`, `paddingLeft`, `paddingRight`, `paddingHorizontal`, `borderTopWidth`, `borderBottomWidth`, `left`, `right`.
-    - Based on average of height and width ratios: `fontSize`, `margin`, `padding`, `borderWidth`.
+    - Based on average of height and width ratios: `fontSize`, `margin`, `padding`, `borderWidth`, `borderRadius`.
 
 1.  Object or array properties are not scaled recursively. One property that could be useful to be scaled is `transform.translateX/Y`.
 1.  The library does not listen to dimensions change (orientation change or split screen). While it is relatively easy to implement, we did not have the need for this functionality yet.
