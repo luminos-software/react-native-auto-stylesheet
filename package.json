@@ -1,6 +1,6 @@
 {
   "name": "react-native-auto-stylesheet",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "React Native package that provides an automatically scalable StyleSheet",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

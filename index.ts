@@ -30,7 +30,9 @@ const PROPERTIES_DEPENDING_ON_WIDTH = [
   'borderLeftWidth',
   'borderRightWidth',
   'left',
-  'right'
+  'right',
+  'minWidth',
+  'maxWidth'
 ];
 const PROPERTIES_DEPENDING_ON_HEIGHT = [
   'height',
@@ -43,7 +45,9 @@ const PROPERTIES_DEPENDING_ON_HEIGHT = [
   'borderTopWidth',
   'borderBottomWidth',
   'top',
-  'bottom'
+  'bottom',
+  'minHeight',
+  'maxHeight'
 ];
 const PROPERTIES_DEPENDING_ON_NEITHER = ['fontSize', 'margin', 'padding', 'borderWidth', 'borderRadius'];
 const PROPERTIES_AFFECTED = [

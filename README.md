@@ -149,8 +149,8 @@ StyleSheet.scaleWithAverageRatio(size: number): number;
 
 1.  Not all properties are scaled. For now, only these properties are scaled, though the list can easily be extended:
 
-    - Based on height: `height`, `marginTop`, `marginBottom`, `marginVertical`, `paddingTop`, `paddingBottom`, `paddingVertical`, `borderLeftWidth`, `borderRightWidth`, `top`, `bottom`.
-    - Based on width: `width`, `marginLeft`, `marginRight`, `marginHorizontal`, `paddingLeft`, `paddingRight`, `paddingHorizontal`, `borderTopWidth`, `borderBottomWidth`, `left`, `right`.
+    - Based on height: `height`, `marginTop`, `marginBottom`, `marginVertical`, `paddingTop`, `paddingBottom`, `paddingVertical`, `borderLeftWidth`, `borderRightWidth`, `top`, `bottom`, `minHeight`, `maxHeight`.
+    - Based on width: `width`, `marginLeft`, `marginRight`, `marginHorizontal`, `paddingLeft`, `paddingRight`, `paddingHorizontal`, `borderTopWidth`, `borderBottomWidth`, `left`, `right`, `minWidth`, `maxWidth`.
     - Based on average of height and width ratios: `fontSize`, `margin`, `padding`, `borderWidth`, `borderRadius`.
 
 1.  Object or array properties are not scaled recursively. One property that could be useful to be scaled is `transform.translateX/Y`.
