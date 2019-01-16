@@ -47,9 +47,20 @@ const PROPERTIES_DEPENDING_ON_HEIGHT = [
   'top',
   'bottom',
   'minHeight',
-  'maxHeight'
+  'maxHeight',
+  'lineHeight'
 ];
-const PROPERTIES_DEPENDING_ON_NEITHER = ['fontSize', 'margin', 'padding', 'borderWidth', 'borderRadius'];
+const PROPERTIES_DEPENDING_ON_NEITHER = [
+  'fontSize',
+  'margin',
+  'padding',
+  'borderWidth',
+  'borderRadius',
+  'borderTopLeftRadius',
+  'borderTopRightRadius',
+  'borderBottomLeftRadius',
+  'borderBottomRightRadius'
+];
 const PROPERTIES_AFFECTED = [
   ...PROPERTIES_DEPENDING_ON_WIDTH,
   ...PROPERTIES_DEPENDING_ON_HEIGHT,
