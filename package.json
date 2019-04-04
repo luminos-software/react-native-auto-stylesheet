@@ -1,6 +1,6 @@
 {
   "name": "react-native-auto-stylesheet",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "React Native package that provides an automatically scalable StyleSheet",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,9 +26,9 @@
   },
   "homepage": "https://github.com/luminos-software/react-native-auto-stylesheet#readme",
   "devDependencies": {
-    "@types/react-native": "0.56.14",
-    "prettier": "1.14.2",
-    "tslint": "5.11.0",
-    "typescript": "3.0.1"
+    "@types/react-native": "0.57.42",
+    "prettier": "1.16.4",
+    "tslint": "5.15.0",
+    "typescript": "3.4.1"
   }
 }

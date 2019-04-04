@@ -1,6 +1,6 @@
 import { Dimensions, ImageStyle, PixelRatio, StyleSheet as RNStyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
+type NamedStyles = Record<string, ViewStyle | TextStyle | ImageStyle>;
 
 const { width, height } = Dimensions.get('window');
 
@@ -95,12 +95,12 @@ export const StyleSheet = {
     return PixelRatio.roundToNearestPixel(size * adimensionalFactor);
   },
 
-  create<T extends NamedStyles<T>>(styles: T, scaleType?: ScaleType) {
+  create<T extends NamedStyles>(styles: T, scaleType?: ScaleType): T {
     const newStyles: T = {} as T;
 
     for (const key in styles) {
       let style: ViewStyle | TextStyle | ImageStyle = styles[key];
-      newStyles[key] = { ...style };
+      newStyles[key] = { ...style } as any;
 
       for (const property in style) {
         const propName = property as keyof (ViewStyle | TextStyle | ImageStyle);

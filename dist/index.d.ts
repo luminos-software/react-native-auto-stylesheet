@@ -1,14 +1,11 @@
 import { ImageStyle, StyleSheet as RNStyleSheet, TextStyle, ViewStyle } from 'react-native';
-declare type NamedStyles<T> = {
-    [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
-};
 export declare type ScaleType = 'height' | 'width' | 'average';
 export declare const StyleSheet: {
     scale(size: number, scaleType: ScaleType): number;
     scaleHorizontally(size: number): number;
     scaleVertically(size: number): number;
     scaleWithAverageRatio(size: number): number;
-    create<T extends NamedStyles<T>>(styles: T, scaleType?: "width" | "height" | "average" | undefined): { [P in keyof T]: import("react-native").RegisteredStyle<T[P]>; };
+    create<T extends Record<string, ViewStyle | TextStyle | ImageStyle>>(styles: T, scaleType?: "width" | "height" | "average" | undefined): T;
     setGuidelineBaseDimensions(newWidth?: number, newHeight?: number): void;
     setFactor(factor: number): void;
     createUnscaled: typeof RNStyleSheet.create;
@@ -16,8 +13,8 @@ export declare const StyleSheet: {
     flatten(style?: import("react-native").StyleProp<TextStyle>): TextStyle;
     flatten(style?: import("react-native").StyleProp<ImageStyle>): ImageStyle;
     flatten(style?: import("react-native").StyleProp<ViewStyle>): ViewStyle;
+    setStyleAttributePreprocessor(property: string, process: (nextProp: any) => any): void;
     hairlineWidth: number;
     absoluteFillObject: RNStyleSheet.AbsoluteFillStyle;
     absoluteFill: import("react-native").RegisteredStyle<RNStyleSheet.AbsoluteFillStyle>;
 };
-export {};
